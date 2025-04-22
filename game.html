@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCK PAPER SCISSORS Game</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .panel {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: cadetblue;
+            width: 50vw;
+            box-shadow: 5px 5px 10px black;
+        }
+
+        h1 {
+            text-decoration: underline;
+            font-size: 35px;
+        }
+
+        p {
+            font-size: 28px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="panel">
+            <h1>ROCK ~ PAPER ~ SCISSORS: Game</h1>
+            <p id="computerChoice"></p>
+            <p id="userChoice"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        // Get User's response
+        var userChoice = prompt("Choose your move: ROCK/ PAPER/ SCISSORS").trim().toUpperCase();
+        document.getElementById("userChoice").innerHTML = `You: ${userChoice}`;
+
+        // Validate User's Choice
+        if (!["ROCK", "PAPER", "SCISSORS"].includes(userChoice)) {
+            alert("Invalid choice! Please try again.");
+            window.location.reload();
+        }
+
+
+        // Generate computer's response
+        let random_no = Math.random() * 100;
+        console.log(random_no);
+
+        var computerChoice
+        if (random_no < 33.34) {
+            computerChoice = "ROCK";
+            console.log(computerChoice);
+        }
+        else if (random_no < 66.34 && random_no > 33.34) {
+            computerChoice = "PAPER";
+            console.log(computerChoice);
+        }
+        else {
+            computerChoice = "SCISSORS";
+            console.log(computerChoice);
+        }
+
+        document.getElementById("computerChoice").innerHTML = `Computer: ${computerChoice}`;
+
+
+        // Coloring Declaration Function
+        const rang = () => {
+            if (result == "Tie") {
+                document.getElementById("result").style.color = "white";
+            }
+            else if (result == "Winner") {
+                document.getElementById("result").style.color = "green";
+            }
+            else {
+                document.getElementById("result").style.color = "red";
+            }
+        }
+
+        // Evaluate Result
+        var result
+                            // For ROCK
+        if (computerChoice == "ROCK" && userChoice == "ROCK") {
+            result = "Tie"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "ROCK" && userChoice == "PAPER") {
+            result = "Winner"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "ROCK" && userChoice == "SCISSORS") {
+            result = "Loser"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+
+                            // For PAPER
+        if (computerChoice == "PAPER" && userChoice == "ROCK") {
+            result = "Loser"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "PAPER" && userChoice == "PAPER") {
+            result = "Tie"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "PAPER" && userChoice == "SCISSORS") {
+            result = "Winner"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+
+                            // For SCISSORS
+        if (computerChoice == "SCISSORS" && userChoice == "ROCK") {
+            result = "Winner"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "SCISSORS" && userChoice == "PAPER") {
+            result = "Loser"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+        else if (computerChoice == "SCISSORS" && userChoice == "SCISSORS") {
+            result = "Tie"
+            document.getElementById("result").innerHTML = result;
+            rang()
+        }
+
+
+        // Displaying the Result
+    </script>
+</body>
+
+</html>
